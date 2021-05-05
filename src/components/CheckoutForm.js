@@ -70,13 +70,15 @@ const CheckoutForm = () => {
         <label htmlFor="checkout-address">Shipping Address</label>
         <br />
         <br />
+        <br />
+        <br />
         <input
           id="checkout-address"
           type="text"
           onChange={(e) => setOrderDetails({ ...orderDetails, address: e.target.value })}
         />
         <div className="stripe-section">
-          <label htmlFor="stripe-element"> <span id="cardText">Credit or debit card </span></label>
+          <label htmlFor="stripe-element"> Credit or debit card </label>
           <CardElement id="stripe-element" options={CARD_ELEMENT_OPTIONS} onChange={handleChange} />
         </div>
         <div className="card-errors" role="alert">
