@@ -10,7 +10,7 @@ const Home = () => {
         return <h3>No Featured Books</h3>
     }
     return (
-        <>
+      <>
             <Hero />
             <section className="featured">
                 <header className="featured-head">

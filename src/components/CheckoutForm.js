@@ -34,8 +34,8 @@ const CheckoutForm = () => {
   useEffect(() => {
     if (orderDetails.token) {
       checkout(orderDetails);
-      //clearCart();
-      //history.push("/");
+      clearCart();
+      history.push("/");
     }
   }, [orderDetails]);
 

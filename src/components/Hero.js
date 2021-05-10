@@ -6,7 +6,7 @@ const Hero = () => {
         <section className="hero">
             <br />
             <br />
-          
+
         </section>
     )
 }
