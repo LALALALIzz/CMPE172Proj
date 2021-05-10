@@ -1,11 +1,9 @@
-import React, { useState, useContext} from 'react'
-import { useParams } from "react-router-dom";
+import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import { API, graphqlOperation, Storage } from "aws-amplify";
 import { AmplifyAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
-import { updateBook} from '../api/mutations'
+import { createBook} from '../api/mutations'
 import config from '../aws-exports'
-import { BookContext } from '../context/books';
 
 const {
     aws_user_files_s3_bucket_region: region,
@@ -13,29 +11,19 @@ const {
 } = config
 
 
-const BookUpdate = () => {
-    const { id } = useParams();
-    const {books} = useContext(BookContext);
-
-    const book = books.find((book) => {
-      return book.id === id;
-    });
-    const { image: url, title, description, author, price } = book;
-
+const AddBook = () => {
     const [image, setImage] = useState(null);
-    const [bookDetails, setBookDetails] = useState({ id: id, title: title, description: description, image: url, author: author, price: price });
-
+    const [bookDetails, setBookDetails] = useState({ title: "", description: "", image: "", author: "", price: "" });
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            //if (!bookDetails.title || !bookDetails.price) return
-            await API.graphql(graphqlOperation(updateBook, { input: bookDetails }))
+            if (!bookDetails.title || !bookDetails.price) return
+            await API.graphql(graphqlOperation(createBook, { input: bookDetails }))
             setBookDetails({ title: "", description: "", image: "", author: "", price: "" })
         } catch (err) {
             console.log('error creating todo:', err)
         }
     }
-
     const handleImageUpload = async (e) => {
         e.preventDefault();
         const file = e.target.files[0];
@@ -58,12 +46,14 @@ const BookUpdate = () => {
         }
     }
 
+
+
     return (
         <section className="admin-wrapper">
             <AmplifyAuthenticator>
                 <section>
                     <header className="form-header">
-                        <h3>Update Book</h3>
+                        <h3>Add New Book</h3>
                         <AmplifySignOut></AmplifySignOut>
                     </header>
                     <form className="form-wrapper" onSubmit={handleSubmit}>
@@ -80,9 +70,9 @@ const BookUpdate = () => {
                                 <p><input
                                     name="email"
                                     type="text"
-                                    placeholder={title}
+                                    placeholder="Type the title"
                                     onChange={(e) => setBookDetails({ ...bookDetails, title: e.target.value })}
-
+                                    required
                                 /></p>
                             </div>
                             <div className="description-form">
@@ -90,9 +80,10 @@ const BookUpdate = () => {
                                 <p><input
                                     name="description"
                                     type="text"
-                                    placeholder= {description}
+                                    rows="8"
+                                    placeholder="Type the description"
                                     onChange={(e) => setBookDetails({ ...bookDetails, description: e.target.value })}
-
+                                    required
                                 /></p>
                             </div>
                             <div className="author-form">
@@ -100,9 +91,9 @@ const BookUpdate = () => {
                                 <p><input
                                     name="author"
                                     type="text"
-                                    placeholder={author}
+                                    placeholder="Type the author's name"
                                     onChange={(e) => setBookDetails({ ...bookDetails, author: e.target.value })}
-
+                                    required
                                 /></p>
                             </div>
                             <div className="price-form">
@@ -110,9 +101,9 @@ const BookUpdate = () => {
                                     <input
                                         name="price"
                                         type="text"
-                                        placeholder={price}
+                                        placeholder="What is the Price (USD)"
                                         onChange={(e) => setBookDetails({ ...bookDetails, price: e.target.value })}
-
+                                        required
                                     /></p>
                             </div>
                             <div className="featured-form">
@@ -132,7 +123,8 @@ const BookUpdate = () => {
                 </section>
             </AmplifyAuthenticator>
         </section>
+
     )
 }
 
-export default BookUpdate
+export default AddBook

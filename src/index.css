@@ -39,6 +39,7 @@ h3 {
   font-weight: 400;
   padding-top: 3rem;
   color: white;
+  text-align: justify;
 }
 
 h4,
@@ -108,29 +109,18 @@ nav ul {
   color: white;
 }
 
-/* Hero Section */
+/* Banner Section */
 
-.hero {
+.banner {
   background: url(./assets/bkg2.jpg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
   min-height: 43vh;
-  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-}
-
-.hero h3 {
-  padding: 3rem;
-}
-
-.hero .wrapper {
-  width: 90%;
-  margin: auto;
 }
 
 /* Featured Books and Books Section */

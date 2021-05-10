@@ -13,7 +13,10 @@ const awsmobile = {
     "aws_appsync_graphqlEndpoint": "https://nac73aredjb5vm5lxg355wwifq.appsync-api.us-west-2.amazonaws.com/graphql",
     "aws_appsync_region": "us-west-2",
     "aws_appsync_authenticationType": "AMAZON_COGNITO_USER_POOLS",
-    "aws_appsync_apiKey": "da2-qywfoclnr5au5jijsinuvr4af4"
+    "aws_appsync_apiKey": "da2-qywfoclnr5au5jijsinuvr4af4",
+    "aws_content_delivery_bucket": "book-store-prod",
+    "aws_content_delivery_bucket_region": "us-west-2",
+    "aws_content_delivery_url": "http://book-store-prod.s3-website-us-west-2.amazonaws.com"
 };
 
 

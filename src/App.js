@@ -11,7 +11,9 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import BookDetails from "./pages/BookDetails";
 import Admin from './pages/Admin';
-import BookUpdate from './pages/BookUpdate'
+import BookUpdate from './pages/BookUpdate';
+import BookInventory from './pages/BookInventory';
+import AddBook from './pages/AddBook';
 
 // Components
 import Header from "./components/Header"
@@ -44,6 +46,12 @@ const App = () => {
         </Route>
         <Route path="/admin">
           <Admin />
+        </Route>
+        <Route path="/addbook">
+          <AddBook />
+        </Route>
+        <Route path="/bookinventory">
+          <BookInventory />
         </Route>
         <Route path="/bookupdate:id">
           <BookUpdate />
