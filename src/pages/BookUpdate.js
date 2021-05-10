@@ -1,11 +1,11 @@
 import React, { useState, useContext} from 'react'
+import { useParams, useHistory } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
 import { API, graphqlOperation, Storage } from "aws-amplify";
 import { AmplifyAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
-import { createBook, deleteBook} from '../api/mutations'
+import { updateBook} from '../api/mutations'
 import config from '../aws-exports'
 import { BookContext } from '../context/books';
-import { Link, useHistory} from "react-router-dom";
 
 const {
     aws_user_files_s3_bucket_region: region,
@@ -13,34 +13,29 @@ const {
 } = config
 
 
-const Admin = () => {
-    const [image, setImage] = useState(null);
-    const [bookDetails, setBookDetails] = useState({ title: "", description: "", image: "", author: "", price: "" });
-    const [deleteDetails, setdeleteDetails] = useState({ id:""});
-    const { books } = useContext(BookContext);
+const BookUpdate = () => {
+    const { id } = useParams();
+    const history = useHistory();
+    const {books} = useContext(BookContext);
 
-    if (!books.length) {
-        return <h3>No Books Available</h3>
-    }
+    const book = books.find((book) => {
+      return book.id === id;
+    });
+    const { image: url, title, description, author, price } = book;
+
+    const [image, setImage] = useState(null);
+    const [bookDetails, setBookDetails] = useState({ id: id, title: title, description: description, image: url, author: author, price: price });
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            if (!bookDetails.title || !bookDetails.price) return
-            await API.graphql(graphqlOperation(createBook, { input: bookDetails }))
+            //if (!bookDetails.title || !bookDetails.price) return
+            await API.graphql(graphqlOperation(updateBook, { input: bookDetails }))
             setBookDetails({ title: "", description: "", image: "", author: "", price: "" })
         } catch (err) {
             console.log('error creating todo:', err)
         }
     }
-    const handleDelete = (id) => async (e) =>{
-                e.preventDefault();
-                const deleteDetails = {id: id};
-                try {
-                    await API.graphql(graphqlOperation(deleteBook, { input: deleteDetails}));
-                } catch (err) {
-                    console.log('error creating todo:', err)
-                }
-              }
 
     const handleImageUpload = async (e) => {
         e.preventDefault();
@@ -64,14 +59,12 @@ const Admin = () => {
         }
     }
 
-
-
     return (
         <section className="admin-wrapper">
             <AmplifyAuthenticator>
                 <section>
                     <header className="form-header">
-                        <h3>Add New Book</h3>
+                        <h3>Update Book</h3>
                         <AmplifySignOut></AmplifySignOut>
                     </header>
                     <form className="form-wrapper" onSubmit={handleSubmit}>
@@ -88,9 +81,9 @@ const Admin = () => {
                                 <p><input
                                     name="email"
                                     type="text"
-                                    placeholder="Type the title"
+                                    placeholder={title}
                                     onChange={(e) => setBookDetails({ ...bookDetails, title: e.target.value })}
-                                    required
+
                                 /></p>
                             </div>
                             <div className="description-form">
@@ -98,10 +91,9 @@ const Admin = () => {
                                 <p><input
                                     name="description"
                                     type="text"
-                                    rows="8"
-                                    placeholder="Type the description"
+                                    placeholder= {description}
                                     onChange={(e) => setBookDetails({ ...bookDetails, description: e.target.value })}
-                                    required
+
                                 /></p>
                             </div>
                             <div className="author-form">
@@ -109,9 +101,9 @@ const Admin = () => {
                                 <p><input
                                     name="author"
                                     type="text"
-                                    placeholder="Type the author's name"
+                                    placeholder={author}
                                     onChange={(e) => setBookDetails({ ...bookDetails, author: e.target.value })}
-                                    required
+
                                 /></p>
                             </div>
                             <div className="price-form">
@@ -119,9 +111,9 @@ const Admin = () => {
                                     <input
                                         name="price"
                                         type="text"
-                                        placeholder="What is the Price (USD)"
+                                        placeholder={price}
                                         onChange={(e) => setBookDetails({ ...bookDetails, price: e.target.value })}
-                                        required
+
                                     /></p>
                             </div>
                             <div className="featured-form">
@@ -139,25 +131,9 @@ const Admin = () => {
                         </div>
                     </form>
                 </section>
-                <section>
-                <div>
-                <h3>Book Inventory</h3>
-                </div>
-                <div className="books">
-                    {books.map(({ id, image, title }) => (
-                        <article key={id} className="book">
-                            <div className="book-image">
-                                <img src={image} alt={title} />
-                            </div>
-                            <button className="btn book-link adminbtn" onClick = {(e) => handleDelete(id)(e)}>delete</button>
-                            <Link to={`/bookupdate${id}`} className="btn book-link">update</Link>
-                        </article>
-                    ))}
-                </div>
-                </section>
             </AmplifyAuthenticator>
         </section>
     )
 }
 
-export default Admin
+export default BookUpdate
