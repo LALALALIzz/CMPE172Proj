@@ -11,7 +11,7 @@ const Books = () => {
     }
 
     return (
-        <section className="books">
+        <section className="books featured-list">
             {books.map(({ image: image, id, title }) => (
                 <article key={id} className="book">
                     <div className="book-image">

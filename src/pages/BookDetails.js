@@ -29,7 +29,7 @@ const BookDetails = () => {
         <h3>{author}</h3>
         <h4>Price - $ {price}</h4>
         <button
-          className="btn"
+          className="centered-btn"
           onClick={() => {
             addToCart({ ...book, id });
             history.push("/cart");
