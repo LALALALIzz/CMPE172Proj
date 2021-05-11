@@ -13,11 +13,14 @@ Ananta Hari 012423216
 
 JustAnIdea <Online Bookstore>
 
-## Project Prompt
+## Project Prompt/Introduction
 
 Covid-19 restricted the outdoor activities.
 
 Many people prefer print books instead of digital ones.
+
+This project is to build an online bookstore to serve the people who want to buy print books remotely.
+Also, admin can manipulate the book inventory, add, delete and update the books.
 
 ## Project Install
 
@@ -33,4 +36,7 @@ Finally, run the start script
 ```Commandline
 npm run start
 ```
+## Project Diagrams
+### Database Diagram
+![alt text](https://github.com/LALALALIzz/sjsu-cmpe172-team19/blob/initversion/Project Diagrams/database(2).png?raw=true)
 
