@@ -42,6 +42,8 @@ Finally, run the start script
 npm run start
 ```
 ## Project Diagrams
+### System Diagram
+https://github.com/LALALALIzz/sjsu-cmpe172-team19/blob/ac4998e57a336c17df892a54116886998fe98ea8/Project%20Diagrams/System_Diagram.png
 ### Database Diagram
 ![Database Diagram](https://github.com/LALALALIzz/sjsu-cmpe172-team19/blob/d58b532785507ba1d94d9f00cc3250dfc78475bf/Project%20Diagrams/database%20(2).png)
 ### Sequence Diagram
