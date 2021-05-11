@@ -38,5 +38,5 @@ npm run start
 ```
 ## Project Diagrams
 ### Database Diagram
-![alt text](https://github.com/LALALALIzz/sjsu-cmpe172-team19/blob/initversion/Project Diagrams/database(2).png?raw=true)
+![alt text](https://github.com/LALALALIzz/sjsu-cmpe172-team19/blob/initversion/Project-Diagrams/database(2).png?raw=true)
 
