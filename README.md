@@ -13,6 +13,11 @@ Ananta Hari 012423216
 
 JustAnIdea <Online Bookstore>
 
+## Web App URL
+```
+http://book-store-prod.s3-website-us-west-2.amazonaws.com/
+```
+
 ## Project Prompt/Introduction
 
 Covid-19 restricted the outdoor activities.
@@ -41,3 +46,17 @@ npm run start
 ![Database Diagram](https://github.com/LALALALIzz/sjsu-cmpe172-team19/blob/d58b532785507ba1d94d9f00cc3250dfc78475bf/Project%20Diagrams/database%20(2).png)
 ### Sequence Diagram
 ![Sequence Diagram](https://github.com/LALALALIzz/sjsu-cmpe172-team19/blob/ab7bd4f058379c4b8e0ed53f8a07e64e9d5fc4d1/Project%20Diagrams/seq_diagram1.png)
+
+## Project Screenshots
+### Home
+![Database Diagram](https://github.com/LALALALIzz/sjsu-cmpe172-team19/blob/015cb6addea670f4fc5548bb2ad1610ef526b21b/Project%20Diagrams/scrnshot1.JPG)
+### Books
+![Database Diagram](https://github.com/LALALALIzz/sjsu-cmpe172-team19/blob/015cb6addea670f4fc5548bb2ad1610ef526b21b/Project%20Diagrams/scrnshot2.JPG)
+### Checkout
+![Database Diagram](https://github.com/LALALALIzz/sjsu-cmpe172-team19/blob/015cb6addea670f4fc5548bb2ad1610ef526b21b/Project%20Diagrams/scrnshot3.JPG)
+### Admin
+![Database Diagram](https://github.com/LALALALIzz/sjsu-cmpe172-team19/blob/015cb6addea670f4fc5548bb2ad1610ef526b21b/Project%20Diagrams/scrnshot4.JPG)
+### Add Book
+![Database Diagram](https://github.com/LALALALIzz/sjsu-cmpe172-team19/blob/015cb6addea670f4fc5548bb2ad1610ef526b21b/Project%20Diagrams/scrnshot5.JPG)
+### Book Inventory
+![Database Diagram](https://github.com/LALALALIzz/sjsu-cmpe172-team19/blob/015cb6addea670f4fc5548bb2ad1610ef526b21b/Project%20Diagrams/scrnshot6.JPG)
