@@ -39,4 +39,5 @@ npm run start
 ## Project Diagrams
 ### Database Diagram
 ![Database Diagram](https://github.com/LALALALIzz/sjsu-cmpe172-team19/blob/d58b532785507ba1d94d9f00cc3250dfc78475bf/Project%20Diagrams/database%20(2).png)
-
+### Sequence Diagram
+![Sequence Diagram](https://github.com/LALALALIzz/sjsu-cmpe172-team19/blob/ab7bd4f058379c4b8e0ed53f8a07e64e9d5fc4d1/Project%20Diagrams/seq_diagram1.png)
